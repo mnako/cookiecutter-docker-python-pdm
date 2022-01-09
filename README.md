@@ -1,6 +1,6 @@
 # cookiecutter-docker-python-pdm
 
-![CI Status](https://github.com/mnako/cookiecutter-docker-python-pdm/workflows/ci/badge.svg)
+![CI Status](https://github.com/mnako/cookiecutter-docker-python-pdm/actions/workflows/ci.yml/badge.svg?branch=main)
 
 A template for a Python project with a disposable, Docker-contained development
 environment.
