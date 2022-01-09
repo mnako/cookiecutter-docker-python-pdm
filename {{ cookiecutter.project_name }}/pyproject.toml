@@ -1,0 +1,49 @@
+[project]
+name = "{{ cookiecutter.project_name }}"
+version = "0.0.1"
+description = ""
+authors = [
+    {name = "Michal Nakoneczny", email = "michal@nakoneczny.pl"},
+]
+dependencies = [
+    "requests==2.27.1",
+]
+requires-python = ">=3.10"
+license = {text = "MIT"}
+
+[project.urls]
+homepage = ""
+
+[project.optional-dependencies]
+dev = [
+    "black==21.12b0",
+    "mypy==0.930",
+    "pytest==6.2.5",
+    "pytest-cov==3.0.0",
+]
+[tool]
+[tool.pdm]
+[tool.pdm.dev-dependencies]
+
+[build-system]
+requires = ["pdm-pep517"]
+build-backend = "pdm.pep517.api"
+
+[tool.mypy]
+files = "{{ cookiecutter.project_name }}/**/*.py,tests/**/*.py"
+exclude = "__pypackages__/"
+ignore_missing_imports = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_unreachable = true
+
+[tool.coverage.run]
+data_file = "/tmp/.{{ cookiecutter.project_name }}.coverage"
+omit = ["tests/*"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 92

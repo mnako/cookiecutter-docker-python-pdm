@@ -1,0 +1,6 @@
+.idea/
+.mypy_cache/
+.pdm.toml
+.pytest_cache/
+__pypackages__/
+**/__pycache__/

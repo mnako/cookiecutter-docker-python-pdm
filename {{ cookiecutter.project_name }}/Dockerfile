@@ -1,0 +1,19 @@
+FROM python:3.10.1-slim-buster
+
+LABEL org.opencontainers.image.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
+
+RUN useradd -m -r user && mkdir /app && chown user /app
+USER user
+
+WORKDIR /app
+RUN python -m pip install --upgrade pip==21.3.1 && pip install --user pdm==1.12.2
+ENV PATH="/app/__pypackages__/3.10/bin:/home/user/.local/bin:${PATH}"
+
+COPY main.py pdm.lock pyproject.toml /app/
+RUN pdm install
+RUN pdm install --group dev --dev
+
+ADD {{ cookiecutter.project_name }} /app/{{ cookiecutter.project_name }}
+ADD tests /app/tests
+
+CMD ["pdm", "run", "python", "main.py"]

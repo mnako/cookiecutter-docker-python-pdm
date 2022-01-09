@@ -1,0 +1,40 @@
+name: "Create Release"
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    name: Create Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Checkout"
+        uses: actions/checkout@v2
+
+      - name: "Build Dev Image"
+        run: make build-dev
+
+      - name: "Run Tests"
+        run: make ci
+
+      - name: "Build Production Image"
+        run: make build-production VERSION={% raw %}${GITHUB_REF_NAME}{% endraw %}
+
+      - name: "Push Production Image"
+        run: |
+          echo "${% raw %}{{ secrets.GITHUB_TOKEN }}{% endraw %}" | docker login ghcr.io -u ${% raw %}{{ github.actor }}{% endraw %} --password-stdin
+          make push-production VERSION={% raw %}${GITHUB_REF_NAME}{% endraw %}
+
+      - name: "Create Release"
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+        with:
+          tag_name: {% raw %}${{ github.ref }}{% endraw %}
+          release_name: Release {% raw %}${{ github.ref }}{% endraw %}
+          body: Auto-generate release notes
+          draft: true
+          prerelease: false

@@ -1,0 +1,17 @@
+name: "Scheduled Run"
+
+on:
+#  schedule:
+#    - cron: "0 */3 * * *"
+
+  workflow_dispatch:
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Tasks
+        run: |
+          echo "${% raw %}{{ secrets.GITHUB_TOKEN }}{% endraw %}" | docker login ghcr.io -u ${% raw %}{{ github.actor }}{% endraw %} --password-stdin
+          docker pull ghcr.io/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}:latest
+          docker run ghcr.io/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}:latest
