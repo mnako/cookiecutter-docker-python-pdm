@@ -2,6 +2,9 @@ name: "Continuous Integration Workflow"
 
 on:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   test:
