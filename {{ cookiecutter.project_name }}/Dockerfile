@@ -1,8 +1,14 @@
 FROM python:3.10.1-slim-buster
 
+ARG USER_ID
+ARG GROUP_ID
+
 LABEL org.opencontainers.image.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
 
-RUN useradd -m -r user && mkdir /app && chown user /app
+RUN groupadd --force --gid ${GROUP_ID} --system usergroup && \
+    useradd --uid ${USER_ID} --gid ${GROUP_ID} --create-home --system user && \
+    mkdir /app && \
+    chown user /app
 USER user
 
 WORKDIR /app
