@@ -36,3 +36,7 @@ disallow_incomplete_defs = true
 warn_redundant_casts = true
 warn_unused_ignores = true
 warn_unreachable = true
+
+[tool.pytest.ini_options]
+log_cli = true
+log_cli_level = "INFO"

@@ -46,14 +46,63 @@ def test_project_renders_to_dir(caplog):
     caplog.set_level(logging.INFO)
 
     assert os.path.isdir(test_project_dir)
-    assert "Lock file hash doesn't match pyproject.toml, packages may be outdated" not in caplog.text
+    assert (
+        "Lock file hash doesn't match pyproject.toml, packages may be outdated"
+        not in caplog.text
+    )
 
 
-def test_project_make_ci_succeeds(caplog):
+def test_project_make_run_succeeds():
+    # caplog.set_level(logging.INFO)
+
+    make_test_process = subprocess.Popen(
+        "make run",
+        shell=True,
+        cwd=test_project_dir,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    for line in iter(make_test_process.stdout.readline, b""):
+        logger.info(line.decode().strip())
+        print(line.decode().strip())
+
+    for line in iter(make_test_process.stderr.readline, b""):
+        logger.warning(line.decode().strip())
+        print(line.decode().strip())
+
+    make_test_process_return_code = make_test_process.wait()
+    assert (
+        make_test_process_return_code == 0
+    ), "make run did not exit with code 0"
+
+
+def test_project_make_format_succeeds(caplog):
     caplog.set_level(logging.INFO)
 
     make_test_process = subprocess.Popen(
-        "make ci",
+        "make format",
+        shell=True,
+        cwd=test_project_dir,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    for line in iter(make_test_process.stdout.readline, b""):
+        logger.info(line.decode().strip())
+
+    for line in iter(make_test_process.stderr.readline, b""):
+        logger.warning(line.decode().strip())
+
+    make_test_process_return_code = make_test_process.wait()
+    assert (
+            make_test_process_return_code == 0
+    ), "make format did not exit with code 0"
+
+
+def test_project_make_test_succeeds(caplog):
+    caplog.set_level(logging.INFO)
+
+    make_test_process = subprocess.Popen(
+        "make test",
         shell=True,
         cwd=test_project_dir,
         stdout=subprocess.PIPE,
@@ -71,11 +120,11 @@ def test_project_make_ci_succeeds(caplog):
     ), "make test did not exit with code 0"
 
 
-def test_project_make_build_production_succeeds(caplog):
+def test_project_make_build_succeeds(caplog):
     caplog.set_level(logging.INFO)
 
     make_test_process = subprocess.Popen(
-        "make build-production VERSION=0.0.0",
+        "make build VERSION=0.0.0",
         shell=True,
         cwd=test_project_dir,
         stdout=subprocess.PIPE,
@@ -90,5 +139,30 @@ def test_project_make_build_production_succeeds(caplog):
     make_test_process_return_code = make_test_process.wait()
     assert (
         make_test_process_return_code == 0
-    ), "make build-production VERSION=0.0.0 did not exit with code 0"
-    assert "Lock file hash doesn't match pyproject.toml, packages may be outdated" not in caplog.text
+    ), "make build VERSION=0.0.0 did not exit with code 0"
+    assert (
+        "Lock file hash doesn't match pyproject.toml, packages may be outdated"
+        not in caplog.text
+    )
+
+
+def test_project_make_rm_succeeds(caplog):
+    caplog.set_level(logging.INFO)
+
+    make_test_process = subprocess.Popen(
+        "make rm",
+        shell=True,
+        cwd=test_project_dir,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+    )
+    for line in iter(make_test_process.stdout.readline, b""):
+        logger.info(line.decode().strip())
+
+    for line in iter(make_test_process.stderr.readline, b""):
+        logger.warning(line.decode().strip())
+
+    make_test_process_return_code = make_test_process.wait()
+    assert (
+        make_test_process_return_code == 0
+    ), "make rm did not exit with code 0"

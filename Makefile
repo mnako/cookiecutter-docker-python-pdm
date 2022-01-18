@@ -1,8 +1,7 @@
-install:
-	pdm install
-	pdm install --group dev
+dev-env:
+	@if [ ! -d "__pypackages__" ]; then pdm install; pdm install --group dev; fi;
 
-test:
+test: dev-env
 	pdm run pytest -vv tests
 
 rm:
