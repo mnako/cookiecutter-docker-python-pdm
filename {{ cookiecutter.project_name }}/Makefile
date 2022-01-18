@@ -2,8 +2,8 @@ USER_ID := $(shell id -u)
 GROUP_ID := $(shell id -g)
 
 dev-env:
-	if [ "$(shell docker image inspect --format='exists' {{ cookiecutter.project_name }}:dev)" != "exists" ]; then docker build --build-arg USER_ID=${USER_ID} --build-arg GROUP_ID=${GROUP_ID} --tag {{ cookiecutter.project_name }}:dev .; fi;
-	if [ ! -d "__pypackages__" ]; then docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install; docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install --group dev; fi;
+	@if [ "$(shell docker image inspect --format='exists' {{ cookiecutter.project_name }}:dev)" != "exists" ]; then docker build --build-arg USER_ID=${USER_ID} --build-arg GROUP_ID=${GROUP_ID} --tag {{ cookiecutter.project_name }}:dev .; fi;
+	@if [ ! -d "__pypackages__" ]; then docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install; docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install --group dev; fi;
 
 run: dev-env
 	docker run --rm -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev
