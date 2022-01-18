@@ -23,8 +23,5 @@ jobs:
       - name: "Set up PDM"
         run: pip install --user pdm
 
-      - name: "Install Dependencies"
-        run: make install
-
       - name: "Test Cookiecutter"
         run: make test
