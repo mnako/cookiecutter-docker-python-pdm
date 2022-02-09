@@ -17,9 +17,11 @@ homepage = ""
 [project.optional-dependencies]
 dev = [
     "black==22.1.0",
+    "isort==5.10.1",
     "mypy==0.931",
     "pytest-cov==3.0.0",
     "pytest==7.0.0",
+    "ssort==0.10.0",
 ]
 [tool]
 [tool.pdm]
