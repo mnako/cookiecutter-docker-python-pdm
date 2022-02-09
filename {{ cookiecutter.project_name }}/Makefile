@@ -3,21 +3,31 @@ GROUP_ID := $(shell id -g)
 
 dev-env:
 	@if [ "$(shell docker image inspect --format='exists' {{ cookiecutter.project_name }}:dev)" != "exists" ]; then docker build --build-arg USER_ID=${USER_ID} --build-arg GROUP_ID=${GROUP_ID} --tag {{ cookiecutter.project_name }}:dev .; fi;
-	@if [ ! -d "__pypackages__" ]; then docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install; docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install --group dev; fi;
+	@if [ ! -d "__pypackages__" ]; then docker run --rm -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install; docker run --rm -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm install --group dev; fi;
 
 run: dev-env
 	docker run --rm -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev
 
 bash: dev-env
-	docker run -it -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev bash
+	docker run --rm -it -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev bash
 
 format: dev-env
-	@docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm run black .
+	@docker run --rm -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev /bin/sh -c " \
+		pdm run ssort {{ cookiecutter.project_name }}/**; \
+		pdm run ssort tests/**; \
+		pdm run isort .; \
+		pdm run black . \
+	"
 
 test: dev-env
-	@docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm run pytest --cov={{ cookiecutter.project_name }} tests
-	@docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm run mypy
-	@docker run -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev pdm run black --check .
+	@docker run --rm -t -v "$(PWD):/app" {{ cookiecutter.project_name }}:dev /bin/sh -c " \
+		pdm run pytest --cov={{ cookiecutter.project_name }} tests; \
+		pdm run mypy; \
+		pdm run ssort --check {{ cookiecutter.project_name }}/**; \
+		pdm run ssort --check tests/**; \
+		pdm run isort --check-only {{ cookiecutter.project_name }}/**; \
+		pdm run isort --check-only .; \
+		pdm run black --check ."
 
 build:
 	@if [ -z ${VERSION} ]; then echo Usage: make build-production VERSION=0.0.0 && exit 1; fi;
