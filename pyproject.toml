@@ -16,7 +16,7 @@ homepage = ""
 
 [project.optional-dependencies]
 dev = [
-    "pytest==7.0.1",
+    "pytest==7.1.1",
 ]
 [tool]
 [tool.pdm]

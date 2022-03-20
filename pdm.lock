@@ -160,8 +160,8 @@ summary = "Python parsing module"
 
 [[package]]
 name = "pytest"
-version = "7.0.1"
-requires_python = ">=3.6"
+version = "7.1.1"
+requires_python = ">=3.7"
 summary = "pytest: simple powerful testing with Python"
 dependencies = [
     "atomicwrites>=1.0; sys_platform == \"win32\"",
@@ -242,7 +242,7 @@ summary = "Backport of pathlib-compatible object wrapper for zip files"
 
 [metadata]
 lock_version = "3.1"
-content_hash = "sha256:3267fbe2ac2064c0c827f00b980525fe620026311ab5bce810a545d4c9e69299"
+content_hash = "sha256:0c4f498501752cd6f66403591b77d25eea5972b10e79871cd7b0f09fd01b285c"
 
 [metadata.files]
 "arrow 1.2.2" = [
@@ -367,9 +367,9 @@ content_hash = "sha256:3267fbe2ac2064c0c827f00b980525fe620026311ab5bce810a545d4c
     {file = "pyparsing-3.0.7-py3-none-any.whl", hash = "sha256:a6c06a88f252e6c322f65faf8f418b16213b51bdfaece0524c1c1bc30c63c484"},
     {file = "pyparsing-3.0.7.tar.gz", hash = "sha256:18ee9022775d270c55187733956460083db60b37d0d0fb357445f3094eed3eea"},
 ]
-"pytest 7.0.1" = [
-    {file = "pytest-7.0.1-py3-none-any.whl", hash = "sha256:9ce3ff477af913ecf6321fe337b93a2c0dcf2a0a1439c43f5452112c1e4280db"},
-    {file = "pytest-7.0.1.tar.gz", hash = "sha256:e30905a0c131d3d94b89624a1cc5afec3e0ba2fbdb151867d8e0ebd49850f171"},
+"pytest 7.1.1" = [
+    {file = "pytest-7.1.1-py3-none-any.whl", hash = "sha256:92f723789a8fdd7180b6b06483874feca4c48a5c76968e03bb3e7f806a1869ea"},
+    {file = "pytest-7.1.1.tar.gz", hash = "sha256:841132caef6b1ad17a9afde46dc4f6cfa59a05f9555aae5151f73bdf2820ca63"},
 ]
 "python-dateutil 2.8.2" = [
     {file = "python_dateutil-2.8.2-py2.py3-none-any.whl", hash = "sha256:961d03dc3453ebbc59dbdea9e4e11c5651520a876d0f4db161e8674aae935da9"},
