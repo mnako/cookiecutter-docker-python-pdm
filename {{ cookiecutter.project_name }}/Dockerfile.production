@@ -6,7 +6,7 @@ RUN addgroup -S usergroup && adduser -S user -G usergroup && mkdir /app && chown
 USER user
 
 WORKDIR /app
-RUN python -m pip install --upgrade pip==22.0.4 && pip install --user pdm==1.14.0
+RUN python -m pip install --upgrade pip==22.1.0 && pip install --user pdm==1.15.0
 ENV PATH="/app/__pypackages__/3.10/bin:/home/user/.local/bin:${PATH}"
 
 COPY main.py pdm.lock pyproject.toml /app/
