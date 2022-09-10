@@ -1,4 +1,4 @@
-FROM python:3.10.6-slim-buster
+FROM python:3.10.7-slim-buster
 
 ARG USER_ID
 ARG GROUP_ID
@@ -12,7 +12,7 @@ RUN groupadd --force --gid ${GROUP_ID} --system usergroup && \
 USER user
 
 WORKDIR /app
-RUN python -m pip install --upgrade pip==22.2.2 && pip install --user pdm==2.1.2
+RUN python -m pip install --upgrade pip==22.2.2 && pip install --user pdm==2.1.3
 ENV PATH="/app/__pypackages__/3.10/bin:/home/user/.local/bin:${PATH}"
 
 COPY main.py pdm.lock pyproject.toml /app/
