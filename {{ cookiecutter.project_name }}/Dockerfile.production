@@ -1,4 +1,4 @@
-FROM python:3.10.9-alpine3.16
+FROM python:3.11.1-alpine3.16
 
 LABEL org.opencontainers.image.source="https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.project_name }}"
 
@@ -6,7 +6,7 @@ RUN addgroup -S usergroup && adduser -S user -G usergroup && mkdir /app && chown
 USER user
 
 WORKDIR /app
-RUN python -m pip install --upgrade pip==22.3.1 && pip install --user pdm==2.3.4
+RUN python -m pip install --upgrade pip==22.3.1 && pip install --user pdm==2.4.0
 ENV PATH="/app/__pypackages__/3.10/bin:/home/user/.local/bin:${PATH}"
 
 COPY main.py pdm.lock pyproject.toml /app/
