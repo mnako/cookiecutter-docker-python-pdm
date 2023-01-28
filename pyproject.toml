@@ -6,9 +6,9 @@ authors = [
     {name = "Michal Nakoneczny", email = "michal@nakoneczny.pl"},
 ]
 dependencies = [
-    "cookiecutter==1.7.3",
+    "cookiecutter==2.1.1",
 ]
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 license = {text = "MIT"}
 
 [project.urls]
@@ -16,7 +16,7 @@ homepage = ""
 
 [project.optional-dependencies]
 dev = [
-    "pytest==7.1.1",
+    "pytest==7.2.1",
 ]
 [tool]
 [tool.pdm]
