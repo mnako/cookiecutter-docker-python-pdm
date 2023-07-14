@@ -1,4 +1,4 @@
-FROM python:3.11.4-slim-buster
+FROM python:3.11.4-slim-bookworm
 
 ARG USER_ID
 ARG GROUP_ID
