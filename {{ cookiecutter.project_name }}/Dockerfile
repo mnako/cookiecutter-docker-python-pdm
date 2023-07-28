@@ -12,7 +12,7 @@ RUN groupadd --force --gid ${GROUP_ID} --system usergroup && \
 USER user
 
 WORKDIR /app
-RUN python -m pip install --upgrade pip==23.1.2 && pip install --user pdm==2.7.4
+RUN python -m pip install --upgrade pip==23.2.1 && pip install --user pdm==2.8.1
 ENV PATH="/app/__pypackages__/3.11/bin:/home/user/.local/bin:${PATH}"
 
 COPY main.py pdm.lock pyproject.toml /app/
