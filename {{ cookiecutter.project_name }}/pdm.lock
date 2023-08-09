@@ -6,7 +6,7 @@ groups = ["default", "dev"]
 cross_platform = true
 static_urls = false
 lock_version = "4.3"
-content_hash = "sha256:2d550bead1220425ffb7de09c0cb621e84f1d86927fe7d9fdf294d5109d39635"
+content_hash = "sha256:5be7d5ee718c8d06c6c3723acd2de2a587c9de700d38bc8a9326bcf5214afe26"
 
 [[package]]
 name = "black"
@@ -19,7 +19,6 @@ dependencies = [
     "packaging>=22.0",
     "pathspec>=0.9.0",
     "platformdirs>=2",
-    "tomli>=1.1.0; python_version < \"3.11\"",
 ]
 files = [
     {file = "black-23.7.0-cp310-cp310-macosx_10_16_arm64.whl", hash = "sha256:5c4bc552ab52f6c1c506ccae05681fab58c3f72d59ae6e6639e8885e94fe2587"},
@@ -156,7 +155,6 @@ requires_python = ">=3.7"
 summary = "Code coverage measurement for Python"
 dependencies = [
     "coverage==7.2.7",
-    "tomli; python_full_version <= \"3.11.0a6\"",
 ]
 files = [
     {file = "coverage-7.2.7-cp310-cp310-macosx_10_9_x86_64.whl", hash = "sha256:d39b5b4f2a66ccae8b7263ac3c8170994b65266797fb96cbbfd3fb5b23921db8"},
@@ -190,16 +188,6 @@ files = [
     {file = "coverage-7.2.7-cp312-cp312-win_amd64.whl", hash = "sha256:9e31cb64d7de6b6f09702bb27c02d1904b3aebfca610c12772452c4e6c21a0d3"},
     {file = "coverage-7.2.7-pp37.pp38.pp39-none-any.whl", hash = "sha256:b7b4c971f05e6ae490fef852c218b0e79d4e52f79ef0c8475566584a8fb3e01d"},
     {file = "coverage-7.2.7.tar.gz", hash = "sha256:924d94291ca674905fe9481f12294eb11f2d3d3fd1adb20314ba89e94f44ed59"},
-]
-
-[[package]]
-name = "exceptiongroup"
-version = "1.1.2"
-requires_python = ">=3.7"
-summary = "Backport of PEP 654 (exception groups)"
-files = [
-    {file = "exceptiongroup-1.1.2-py3-none-any.whl", hash = "sha256:e346e69d186172ca7cf029c8c1d16235aa0e04035e5750b4b95039e65204328f"},
-    {file = "exceptiongroup-1.1.2.tar.gz", hash = "sha256:12c3e887d6485d16943a309616de20ae5582633e0a2eda17f4e10fd61c1e8af5"},
 ]
 
 [[package]]
@@ -239,7 +227,6 @@ requires_python = ">=3.7"
 summary = "Optional static typing for Python"
 dependencies = [
     "mypy-extensions>=1.0.0",
-    "tomli>=1.1.0; python_version < \"3.11\"",
     "typing-extensions>=4.1.0",
 ]
 files = [
@@ -314,11 +301,9 @@ requires_python = ">=3.7"
 summary = "pytest: simple powerful testing with Python"
 dependencies = [
     "colorama; sys_platform == \"win32\"",
-    "exceptiongroup>=1.0.0rc8; python_version < \"3.11\"",
     "iniconfig",
     "packaging",
     "pluggy<2.0,>=0.12",
-    "tomli>=1.0.0; python_version < \"3.11\"",
 ]
 files = [
     {file = "pytest-7.4.0-py3-none-any.whl", hash = "sha256:78bf16451a2eb8c7a2ea98e32dc119fd2aa758f1d5d66dbf0a59d69a3969df32"},
@@ -390,16 +375,6 @@ dependencies = [
 ]
 files = [
     {file = "ssort-0.11.6.tar.gz", hash = "sha256:21fec493487f32dff50d30efa5b6aad18286e9817600b64bfe686ae062bae7ae"},
-]
-
-[[package]]
-name = "tomli"
-version = "2.0.1"
-requires_python = ">=3.7"
-summary = "A lil' TOML parser"
-files = [
-    {file = "tomli-2.0.1-py3-none-any.whl", hash = "sha256:939de3e7a6161af0c887ef91b7d41a53e7c5a1ca976325f429cb46ea9bc30ecc"},
-    {file = "tomli-2.0.1.tar.gz", hash = "sha256:de526c12914f0c550d15924c62d72abc48d6fe7364aa87328337a31007fe8a4f"},
 ]
 
 [[package]]
