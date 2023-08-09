@@ -8,35 +8,12 @@ authors = [
 dependencies = [
     "cookiecutter==2.2.3",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.7"
 license = {text = "MIT"}
 
 [project.urls]
 homepage = ""
 
-[project.optional-dependencies]
-dev = [
-    "pytest==7.4.0",
-]
-[tool]
-[tool.pdm]
-[tool.pdm.dev-dependencies]
-
 [build-system]
 requires = ["pdm-pep517"]
 build-backend = "pdm.pep517.api"
-
-[tool.mypy]
-files = "{{ cookiecutter.project_name }}/**/*.py,tests/**/*.py"
-exclude = "__pypackages__/"
-ignore_missing_imports = true
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-disallow_incomplete_defs = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-warn_unreachable = true
-
-[tool.pytest.ini_options]
-log_cli = true
-log_cli_level = "INFO"
