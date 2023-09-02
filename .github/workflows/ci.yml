@@ -23,6 +23,7 @@ jobs:
 
       - name: "Set up PDM"
         run: |
+          pip install --upgrade pip==23.2.1
           pip install --user pdm==2.9.0
           pdm install
 
