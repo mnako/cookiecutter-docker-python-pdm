@@ -18,11 +18,11 @@ homepage = ""
 dev = [
     "black==24.2.0",
     "isort==5.13.2",
-    "mypy==1.8.0",
+    "mypy==1.9.0",
     "pytest-cov==4.1.0",
-    "pytest==8.0.1",
+    "pytest==8.1.1",
     "ssort==0.12.4",
-    "ruff==0.2.2",
+    "ruff==0.3.2",
 ]
 [build-system]
 requires = ["pdm-pep517"]
