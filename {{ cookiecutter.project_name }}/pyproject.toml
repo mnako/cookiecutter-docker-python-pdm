@@ -16,13 +16,13 @@ homepage = ""
 
 [project.optional-dependencies]
 dev = [
-    "black==24.2.0",
+    "black==24.3.0",
     "isort==5.13.2",
     "mypy==1.9.0",
-    "pytest-cov==4.1.0",
+    "pytest-cov==5.0.0",
     "pytest==8.1.1",
     "ssort==0.12.4",
-    "ruff==0.3.2",
+    "ruff==0.3.4",
 ]
 [build-system]
 requires = ["pdm-pep517"]
